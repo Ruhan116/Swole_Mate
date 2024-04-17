@@ -1,50 +1,96 @@
 package com.example.swole_mate.controller;
 
 import com.example.swole_mate.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
-
-
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import java.io.IOException;
 
+
 public class LoginController {
-    @FXML
-    private TextField usernameField;
 
     @FXML
-    private PasswordField passwordField;
+    private AnchorPane anchorpane_login;
 
     @FXML
-    private void handleLoginButtonAction() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
+    private TextField EmailField;
 
+    @FXML
+    private PasswordField PassField;
 
-        System.out.println("Username: " + username);
-        System.out.println("Password: " + password);
+    @FXML
+    private CheckBox response;
 
-        System.out.println("Login successful!");
+    @FXML
+    private Button LogInButton;
+
+    @FXML
+    private Button exit;
+
+    @FXML
+    private Label epValidation;
+
+    @FXML
+    private Label passwordValidation;
+
+    @FXML
+    private Button back;
+
+    @FXML
+    private Button register;
+
+    @FXML
+    void clear(MouseEvent event) {
+        // Add logic to clear validation labels or fields if needed
     }
 
     @FXML
-    private void handleRegisterLinkAction(MouseEvent e) {
+    void close() {
+        // Add logic to close the application window
+    }
+
+    @FXML
+    void dragged(MouseEvent event) {
+        // Add logic to handle window dragging
+    }
+
+    @FXML
+    void loginBtn(MouseEvent event) {
+        // Add logic to handle login button click
+    }
+
+    @FXML
+    void GoBackLogIn() {
+        // Add logic to navigate back to previous screen
+    }
+
+    @FXML
+    void pressed(MouseEvent event) {
+        // Add logic to handle window dragging
+    }
+
+    @FXML
+    void acc_register(ActionEvent e) {
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/registration_screen_1.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/registration.fxml"));
             Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            Scene scene = new Scene(fxmlLoader.load(), 627, 569);
             stage.setTitle("Swole-Mate");
             stage.setScene(scene);
             stage.show();
         }
-        catch (IOException e1) {
-            e1.printStackTrace();
+        catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
-
 }
