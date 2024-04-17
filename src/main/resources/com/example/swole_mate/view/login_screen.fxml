@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.swole_mate.controller.Controller">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swole_mate.controller.LoginController">
+  <left>
+    <AnchorPane prefHeight="720.0" prefWidth="640.0" style="-fx-background-color: #96D6E2;" BorderPane.alignment="CENTER">
+      <children>
+        <Text fill="#0d0036" layoutX="80.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Swole Mate" wrappingWidth="480.0">
+          <font>
+            <Font name="System Bold" size="66.0" />
+          </font>
+        </Text>
+      </children>
+    </AnchorPane>
+  </left>
+  <center>
+    <AnchorPane prefHeight="720.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+      <children>
+        <TextField fx:id="usernameField" layoutX="220.0" layoutY="299.0" prefHeight="25.0" prefWidth="200.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
+        <PasswordField fx:id="passwordField" layoutX="220.0" layoutY="360.0" prefHeight="25.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
+        <Button layoutX="260.0" layoutY="410.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #0f1321; -fx-background-radius: 0px;" text="Login" textFill="WHITE" />
+        <Text layoutX="200.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Your Life Now !" wrappingWidth="239.199951171875">
+          <font>
+            <Font name="Wingdings 3" size="24.0" />
+          </font>
+        </Text>
+        <Text fill="#404040" layoutX="234.0" layoutY="481.0" onMouseClicked="#handleRegisterLinkAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account? Register">
+        </Text>
+      </children>
+    </AnchorPane>
+  </center>
+</BorderPane>
