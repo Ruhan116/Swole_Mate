@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -16,27 +17,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="Main" onMouseDragged="#dragWindow" onMousePressed="#pressedWindow" prefHeight="617.0" prefWidth="1000.0" stylesheets="@CSS/SignUp.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swole_mate.controller.RegistrationController">
+<AnchorPane fx:id="Main" onMouseDragged="#dragWindow" onMousePressed="#pressedWindow" prefHeight="617.0" prefWidth="1000.0" stylesheets="@CSS/SignUp.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swole_mate.controller.RegistrationController">
     <children>
-        <HBox id="hbox" fx:id="hbox" layoutX="427.0" layoutY="586.0" prefHeight="37.0" prefWidth="576.0">
-            <children>
-                <Button fx:id="button1" mnemonicParsing="false" prefHeight="37.0" prefWidth="171.0" text="Account Info">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                </Button>
-                <Button fx:id="button2" mnemonicParsing="false" prefHeight="37.0" prefWidth="209.0" text="Personal Info">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                </Button>
-                <Button fx:id="button3" mnemonicParsing="false" prefHeight="37.0" prefWidth="159.0" text="Payment Info">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                </Button>
-            </children>
-        </HBox>
+        <HBox id="hbox" fx:id="hbox" layoutX="427.0" layoutY="586.0" prefHeight="37.0" prefWidth="576.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="635.0" layoutX="-32.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="448.0">
             <fill>
                 <LinearGradient endX="0.798107303655486" endY="0.37223962654450715" startX="0.04731861499581791" startY="0.2996845425867506">
@@ -111,7 +94,7 @@
                         <Font name="System Italic" size="10.0" />
                     </font>
                 </Label>
-                <Button id="next" layoutX="79.0" layoutY="418.0" mnemonicParsing="false" onAction="#nextForm" prefHeight="30.0" prefWidth="140.0" text="Next" textFill="WHITE">
+                <Button id="next" layoutX="79.0" layoutY="418.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="30.0" prefWidth="140.0" text="Next" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>

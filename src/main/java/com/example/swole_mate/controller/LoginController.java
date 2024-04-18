@@ -84,7 +84,7 @@ public class LoginController {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/registration.fxml"));
             Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            Scene scene = new Scene(fxmlLoader.load(), 627, 569);
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 617);
             stage.setTitle("Swole-Mate");
             stage.setScene(scene);
             stage.show();
