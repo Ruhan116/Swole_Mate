@@ -14,10 +14,7 @@ public class DatabaseManager {
 
     public static Connection getConnection() throws SQLException {
         try {
-            // Load the JDBC driver class
             Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Create a connection
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

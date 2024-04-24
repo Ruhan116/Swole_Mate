@@ -160,7 +160,7 @@ public class RegistrationController {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            // Handle database connection or query execution errors
+
             return;
         }
 
