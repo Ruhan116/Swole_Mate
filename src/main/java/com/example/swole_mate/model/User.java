@@ -1,5 +1,9 @@
 package com.example.swole_mate.model;
 
+import com.example.swole_mate.Functions.functions;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class User {
     private int id;
     private String username;
@@ -58,5 +62,16 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public void mapResultSetToUser(ResultSet resultSet) throws SQLException {
+
+
+        this.setId(Integer.parseInt(resultSet.getString("ID")));
+        this.setUsername(resultSet.getString("USERNAME"));
+        this.setPassword(resultSet.getString("PASSWORD"));
+        this.setEmail(resultSet.getString("EMAIL"));
+
+
     }
 }

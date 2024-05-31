@@ -1,4 +1,4 @@
-package com.example.swole_mate.model;
+package com.example.swole_mate.Util;
 
 public class MacronutrientCalculator {
     public static double[] calculateMacronutrientRatio(String goal) {

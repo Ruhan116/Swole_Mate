@@ -1,6 +1,6 @@
 package com.example.swole_mate.controller;
 
-import com.example.swole_mate.util.DatabaseManager;
+import com.example.swole_mate.Database.DatabaseManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -146,40 +146,40 @@ public class RegistrationController {
 
         // 2. Check for existing username
         String checkUsernameQuery = "SELECT COUNT(*) FROM mydatabase.users WHERE username = ?";
-        try (Connection connectDB = DatabaseManager.getConnection();
-             PreparedStatement statement = connectDB.prepareStatement(checkUsernameQuery)) {
-            statement.setString(1, username);
-
-            ResultSet queryOutput = statement.executeQuery();
-            queryOutput.next();
-
-            int existingUsers = queryOutput.getInt(1);
-            if (existingUsers > 0) {
-                userNameValidation.setText("Username already exists!");
-                return;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            return;
-        }
+//        try (Connection connectDB = DatabaseManager.getConnection();
+//             PreparedStatement statement = connectDB.prepareStatement(checkUsernameQuery)) {
+//            statement.setString(1, username);
+//
+//            ResultSet queryOutput = statement.executeQuery();
+//            queryOutput.next();
+//
+//            int existingUsers = queryOutput.getInt(1);
+//            if (existingUsers > 0) {
+//                userNameValidation.setText("Username already exists!");
+//                return;
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//
+//            return;
+//        }
 
         // 3. Insert user into database
-        String insertUserQuery = "INSERT INTO mydatabase.users (username, password, email) VALUES (?, ?, ?)";
-        try (Connection connectDB = DatabaseManager.getConnection();
-             PreparedStatement statement = connectDB.prepareStatement(insertUserQuery)) {
-            statement.setString(1, username);
-            statement.setString(2, password);
-            statement.setString(3, email);
-
-            statement.executeUpdate();
-
-            // Registration successful
-            System.out.println("User registered successfully!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            // Handle database connection or query execution errors
-        }
+//        String insertUserQuery = "INSERT INTO mydatabase.users (username, password, email) VALUES (?, ?, ?)";
+//        try (Connection connectDB = DatabaseManager.getConnection();
+//             PreparedStatement statement = connectDB.prepareStatement(insertUserQuery)) {
+//            statement.setString(1, username);
+//            statement.setString(2, password);
+//            statement.setString(3, email);
+//
+//            statement.executeUpdate();
+//
+//            // Registration successful
+//            System.out.println("User registered successfully!");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            // Handle database connection or query execution errors
+//        }
     }
 
 
