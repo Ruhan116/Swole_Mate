@@ -1,12 +1,10 @@
 package com.example.swole_mate.controller;
 
-import com.example.swole_mate.Main;
 import com.example.swole_mate.Database.DatabaseManager;
+import com.example.swole_mate.Database.UserDB;
+import com.example.swole_mate.Functions.Hash;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -17,9 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -69,7 +65,7 @@ public class RegistrationController {
     private TextField email;
 
     @FXML
-    private PasswordField password;
+    private TextField password;
 
     @FXML
     private PasswordField cPassword;
@@ -147,27 +143,30 @@ public class RegistrationController {
 
     public void registerUser(ActionEvent event) throws SQLException {
         // 1. Get user input
-        String firstName = fName.getText();
-        String lastName = lName.getText();
+        UserDB userdb;
+        UserDB.createUserTable();
+
         String username = uName.getText();
-        String userEmail = email.getText();
-        String userPassword = password.getText();
-        String userPasswordCopy = cPassword.getText();
+        String email = this.email.getText();
+        String password = this.password.getText(); // Assuming password is hashed before storing
 
-        DatabaseManager databaseManager = new DatabaseManager();
-        databaseManager.addUser(firstName+lastName, userPassword, userEmail);
 
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(com.example.swole_mate.Main.class.getResource("view/exercise_place.fxml"));
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-            stage.setTitle("Swole-Mate");
-            stage.setScene(scene);
-            stage.show();
+
+        if(UserDB.searchName("username").getUsername() != null)
+        {
+
         }
-        catch (IOException exception) {
-            exception.printStackTrace();
+        else
+        {
+            Hash hash;
+            password = Hash.hashPassword(password);
+
+            UserDB.addUser(username, password, email);
         }
+
+
+
+
 
     }
 
