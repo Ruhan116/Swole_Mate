@@ -25,34 +25,37 @@
    <center>
       <AnchorPane onMouseClicked="#gymPlaceDone" prefHeight="622.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane layoutX="164.0" layoutY="105.0" prefHeight="478.0" prefWidth="696.0">
+            <AnchorPane layoutX="292.0" layoutY="105.0" prefHeight="478.0" prefWidth="696.0">
                <children>
                   <Label layoutX="211.0" layoutY="14.0" text="Where do you exercise?">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="211.0" fitWidth="213.0" layoutX="98.0" layoutY="69.0" onMouseClicked="#gymPlaceDone" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="211.0" fitWidth="213.0" layoutX="122.0" layoutY="69.0" onMouseClicked="#gymPlaceDone" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/gym_icon.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="184.0" layoutY="285.0" text="Gym">
+                  <Label layoutX="206.0" layoutY="285.0" text="Gym">
                      <font>
-                        <Font size="19.0" />
+                        <Font size="21.0" />
                      </font>
                   </Label>
                   <Label layoutX="458.0" layoutY="285.0" text="Home">
                      <font>
-                        <Font size="19.0" />
+                        <Font size="21.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="211.0" fitWidth="213.0" layoutX="378.0" layoutY="69.0" onMouseClicked="#gymPlaceDone" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="211.0" fitWidth="213.0" layoutX="381.0" layoutY="69.0" onMouseClicked="#gymPlaceDone" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/gym_home.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="168.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="With Gym, we will focus your plan on traditional progressive overload with a wide variety of exercises and equipment. With Home we will focus on progressing leverages within different bodyweight variations and progressions. Note that you will be able to switch seamlessly between the two." textAlignment="CENTER" wrappingWidth="398.3297119140625" />
+                  <Text layoutX="148.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="With Gym, we will focus your plan on traditional progressive overload with a wide variety of exercises and equipment. With Home we will focus on progressing leverages within different bodyweight variations and progressions. Note that you will be able to switch seamlessly between the two." textAlignment="CENTER" wrappingWidth="398.3297119140625">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
                </children>
             </AnchorPane>
          </children>

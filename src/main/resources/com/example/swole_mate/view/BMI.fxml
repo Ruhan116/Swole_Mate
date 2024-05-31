@@ -4,23 +4,21 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" stylesheets="@CSS/Main_App.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swole_mate.controller.BMIController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@CSS/Main_App.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swole_mate.controller.BMIController">
     <children>
-        <BorderPane layoutX="85.0" layoutY="-28.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <BorderPane layoutX="85.0" layoutY="-28.0" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
-                <BorderPane prefHeight="102.0" prefWidth="941.0" styleClass="borderName" stylesheets="@CSS/Main_App.css" BorderPane.alignment="CENTER">
+                <BorderPane prefHeight="102.0" prefWidth="941.0" styleClass="patches_top" stylesheets="@CSS/Main_App.css" BorderPane.alignment="CENTER">
                     <center>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="BMI" BorderPane.alignment="CENTER">
                             <font>
@@ -36,54 +34,48 @@
             <center>
                 <AnchorPane prefHeight="100.0" prefWidth="902.0" BorderPane.alignment="CENTER">
                <children>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1102.0" prefWidth="1040.0" stylesheets="@CSS/Main_App.css">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="954.0" prefWidth="1040.0" stylesheets="@CSS/Main_App.css">
                      <children>
-                        <AnchorPane layoutX="208.0" layoutY="193.0" prefHeight="735.0" prefWidth="753.0" stylesheets="@CSS/Main_App.css" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="79.19999999999993">
+                        <AnchorPane layoutX="14.0" layoutY="-5.0" prefHeight="958.0" prefWidth="1522.0" stylesheets="@CSS/Main_App.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-495.5999999999999">
                            <children>
-                              <AnchorPane layoutX="28.0" layoutY="27.0" prefHeight="171.0" prefWidth="327.0" style="-fx-background-color: FFFFFF;" styleClass="patches" stylesheets="@CSS/Main_App.css">
+                              <AnchorPane layoutX="248.0" layoutY="47.0" prefHeight="171.0" prefWidth="327.0" style="-fx-background-color: FFFFFF;" styleClass="patches" stylesheets="@CSS/Main_App.css">
                                  <children>
-                                    <BorderPane layoutX="23.0" layoutY="-21.0" prefHeight="187.0" prefWidth="261.0" stylesheets="@CSS/Main_App.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <top>
-                                          <AnchorPane prefHeight="31.0" prefWidth="277.0" styleClass="patches_top" stylesheets="@CSS/Main_App.css" BorderPane.alignment="CENTER" />
-                                       </top>
+                                    <BorderPane layoutX="2.0" layoutY="43.0" prefHeight="120.0" prefWidth="350.0">
+                                       <center>
+                                          <Text fx:id="bmiValueText" fill="#232f42" strokeType="OUTSIDE" strokeWidth="0.0" text="24" BorderPane.alignment="CENTER">
+                                             <font>
+                                                <Font name="System Bold" size="30.0" />
+                                             </font>
+                                             <BorderPane.margin>
+                                                <Insets top="30.0" />
+                                             </BorderPane.margin>
+                                          </Text>
+                                       </center>
                                        <bottom>
-                                          <BorderPane prefHeight="139.0" prefWidth="337.0" BorderPane.alignment="CENTER">
-                                             <center>
-                                                <Text fx:id="bmiValueText" fill="#232f42" strokeType="OUTSIDE" strokeWidth="0.0" text="24" BorderPane.alignment="CENTER">
-                                                   <font>
-                                                      <Font name="System Bold" size="30.0" />
-                                                   </font>
-                                                   <BorderPane.margin>
-                                                      <Insets top="30.0" />
-                                                   </BorderPane.margin>
-                                                </Text>
-                                             </center>
-                                             <bottom>
-                                                <Text fx:id="bmiDescriptionText" fill="#232f42" strokeType="OUTSIDE" strokeWidth="0.0" text="Current BMI" textAlignment="CENTER" BorderPane.alignment="CENTER">
-                                                   <font>
-                                                      <Font name="System Italic" size="14.0" />
-                                                   </font>
-                                                   <BorderPane.margin>
-                                                      <Insets bottom="30.0" top="20.0" />
-                                                   </BorderPane.margin>
-                                                </Text>
-                                             </bottom>
-                                          </BorderPane>
+                                          <Text fx:id="bmiDescriptionText" fill="#232f42" strokeType="OUTSIDE" strokeWidth="0.0" text="Current BMI" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                                             <font>
+                                                <Font name="System Italic" size="14.0" />
+                                             </font>
+                                             <BorderPane.margin>
+                                                <Insets bottom="30.0" top="20.0" />
+                                             </BorderPane.margin>
+                                          </Text>
                                        </bottom>
                                     </BorderPane>
+                                    <AnchorPane layoutY="-2.0" prefHeight="42.0" prefWidth="351.0" styleClass="patches_top" stylesheets="@CSS/Main_App.css" />
                                  </children>
                               </AnchorPane>
-                              <Text fx:id="BMIText" fill="#031927" layoutX="404.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Normal">
+                              <Text fx:id="BMIText" fill="#031927" layoutX="707.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Normal">
                                  <font>
                                     <Font name="System Bold" size="30.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="BMIDescription" fill="#265470" layoutX="394.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your BMI (Body Mass Index) according to your weight, height and age is perfectly normal. Keep it Up." wrappingWidth="247.3333740234375">
+                              <Text fx:id="BMIDescription" fill="#265470" layoutX="707.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your BMI (Body Mass Index) according to your weight, height and age is perfectly normal. Keep it Up." wrappingWidth="247.3333740234375">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="406.0" layoutY="149.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="134.0" text="Calculate New" textFill="WHITE">
+                              <Button layoutX="707.0" layoutY="171.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="134.0" text="Calculate New" textFill="WHITE">
                                  <styleClass>
                                     <String fx:value="onhover" />
                                     <String fx:value="buttoncolor" />
@@ -109,84 +101,76 @@
                                              <children>
                                                 <AnchorPane fx:id="PendingPane" prefHeight="200.0" prefWidth="200.0">
                                                    <children>
-                                                      <ScrollPane>
-                                                         <content>
-                                                            <FlowPane prefHeight="373.0" prefWidth="492.0">
-                                                               <children>
-                                                                  <HBox prefHeight="150.0" prefWidth="494.0" styleClass="myownHBOX" stylesheets="@CSS/Main_App.css">
-                                                                     <children>
-                                                                        <ImageView fitHeight="71.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
-                                                                           <image>
-                                                                              <Image url="@Images/height.png" />
-                                                                           </image>
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" top="15.0" />
-                                                                           </HBox.margin>
-                                                                        </ImageView>
-                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Height:">
-                                                                           <HBox.margin>
-                                                                              <Insets top="40.0" />
-                                                                           </HBox.margin>
-                                                                           <font>
-                                                                              <Font name="System Bold" size="18.0" />
-                                                                           </font>
-                                                                        </Text>
-                                                                        <TextField prefWidth="70.0">
-                                                                           <HBox.margin>
-                                                                              <Insets left="10.0" top="40.0" />
-                                                                           </HBox.margin>
-                                                                        </TextField>
-                                                                        <Label text="ft">
-                                                                           <HBox.margin>
-                                                                              <Insets left="10.0" top="40.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                        <TextField layoutX="224.0" layoutY="50.0" prefWidth="70.0">
-                                                                           <HBox.margin>
-                                                                              <Insets left="15.0" top="40.0" />
-                                                                           </HBox.margin>
-                                                                        </TextField>
-                                                                        <Label text="inches">
-                                                                           <HBox.margin>
-                                                                              <Insets left="10.0" top="40.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox prefHeight="150.0" prefWidth="493.0" styleClass="myownHBOX" stylesheets="@CSS/Main_App.css">
-                                                                     <children>
-                                                                        <ImageView fitHeight="71.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
-                                                                           <image>
-                                                                              <Image url="@Images/weighing-machine.png" />
-                                                                           </image>
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" top="15.0" />
-                                                                           </HBox.margin>
-                                                                        </ImageView>
-                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Weight:">
-                                                                           <HBox.margin>
-                                                                              <Insets left="15.0" top="40.0" />
-                                                                           </HBox.margin>
-                                                                           <font>
-                                                                              <Font name="System Bold" size="18.0" />
-                                                                           </font>
-                                                                        </Text>
-                                                                        <TextField>
-                                                                           <HBox.margin>
-                                                                              <Insets left="10.0" top="40.0" />
-                                                                           </HBox.margin>
-                                                                        </TextField>
-                                                                        <Label text="pounds">
-                                                                           <HBox.margin>
-                                                                              <Insets left="10.0" top="40.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                               </children>
-                                                            </FlowPane>
-                                                         </content>
-                                                      </ScrollPane>
+                                                      <HBox layoutY="6.0" prefHeight="150.0" prefWidth="494.0" styleClass="myownHBOX" stylesheets="@CSS/Main_App.css">
+                                                         <children>
+                                                            <ImageView fitHeight="71.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@Images/height.png" />
+                                                               </image>
+                                                               <HBox.margin>
+                                                                  <Insets left="20.0" top="15.0" />
+                                                               </HBox.margin>
+                                                            </ImageView>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Height:">
+                                                               <HBox.margin>
+                                                                  <Insets top="40.0" />
+                                                               </HBox.margin>
+                                                               <font>
+                                                                  <Font name="System Bold" size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <TextField prefWidth="70.0">
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="40.0" />
+                                                               </HBox.margin>
+                                                            </TextField>
+                                                            <Label text="ft">
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="40.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <TextField layoutX="224.0" layoutY="50.0" prefWidth="70.0">
+                                                               <HBox.margin>
+                                                                  <Insets left="15.0" top="40.0" />
+                                                               </HBox.margin>
+                                                            </TextField>
+                                                            <Label text="inches">
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="40.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox layoutY="140.0" prefHeight="150.0" prefWidth="493.0" styleClass="myownHBOX" stylesheets="@CSS/Main_App.css">
+                                                         <children>
+                                                            <ImageView fitHeight="71.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@Images/weighing-machine.png" />
+                                                               </image>
+                                                               <HBox.margin>
+                                                                  <Insets left="20.0" top="15.0" />
+                                                               </HBox.margin>
+                                                            </ImageView>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Weight:">
+                                                               <HBox.margin>
+                                                                  <Insets left="15.0" top="40.0" />
+                                                               </HBox.margin>
+                                                               <font>
+                                                                  <Font name="System Bold" size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <TextField>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="40.0" />
+                                                               </HBox.margin>
+                                                            </TextField>
+                                                            <Label text="pounds">
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="40.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
                                                    </children>
                                                 </AnchorPane>
                                              </children>
@@ -205,6 +189,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Text>
+                              <BorderPane layoutX="738.4" layoutY="92.0" prefHeight="171.0" prefWidth="354.0" stylesheets="@CSS/Main_App.css" AnchorPane.bottomAnchor="796.0" AnchorPane.leftAnchor="738.0" AnchorPane.rightAnchor="428.0" AnchorPane.topAnchor="92.0" />
                            </children>
                         </AnchorPane>
                      </children>
