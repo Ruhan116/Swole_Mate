@@ -12,16 +12,15 @@ import java.util.List;
 public class DatabaseManager {
     private static final String URL = "jdbc:mysql://localhost:3306";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "password";
+    private static final String PASSWORD = "1234";
 
     private static final String DB_NAME = "SWOLEMATE";
 
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         try {
             createDatabase();  // Step 1: Ensure the database exists
             createUserTable();
-            addUser();
 
             System.out.println("Database and table created successfully.");
         } catch (SQLException e) {
@@ -125,9 +124,9 @@ public class DatabaseManager {
     public static void createUserTable() throws SQLException {
         String query = "CREATE TABLE IF NOT EXISTS USERS (" +
                 "ID INT AUTO_INCREMENT PRIMARY KEY, " +
-                "USERNAME VARCHAR(20), " +
-                "PASSWORD VARCHAR(20), " +
-                "EMAIL VARCHAR(20))";
+                "USERNAME VARCHAR(50), " +
+                "PASSWORD VARCHAR(50), " +
+                "EMAIL VARCHAR(50))";
 
         execute_update(query);
     }
@@ -171,8 +170,8 @@ public class DatabaseManager {
         return user;
     }
 
-    public static void addUser() throws SQLException {
-        User user = new User("Rifat", "Ruhan", "Wasif");
+    public void addUser(String username, String password, String email) throws SQLException {
+        User user = new User(username, password, email);
 
         String query = "INSERT INTO USERS (USERNAME, PASSWORD, EMAIL) VALUES (?, ?, ?)";
         execute_update(query, user.getUsername(), user.getPassword(), user.getEmail());

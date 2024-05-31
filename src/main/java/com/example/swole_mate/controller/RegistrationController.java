@@ -1,7 +1,7 @@
 package com.example.swole_mate.controller;
 
 import com.example.swole_mate.Main;
-import com.example.swole_mate.util.DatabaseManager;
+import com.example.swole_mate.Database.DatabaseManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class RegistrationController {
     @FXML
@@ -144,7 +145,7 @@ public class RegistrationController {
         // Code to handle going back to the login page goes here
     }
 
-    public void registerUser(ActionEvent event) {
+    public void registerUser(ActionEvent event) throws SQLException {
         // 1. Get user input
         String firstName = fName.getText();
         String lastName = lName.getText();
@@ -153,43 +154,8 @@ public class RegistrationController {
         String userPassword = password.getText();
         String userPasswordCopy = cPassword.getText();
 
-        String checkUsernameQuery = "SELECT COUNT(*) FROM mydatabase.users WHERE username = ?";
-        try (Connection connectDB = DatabaseManager.getConnection();
-             PreparedStatement statement = connectDB.prepareStatement(checkUsernameQuery)) {
-            statement.setString(1, username);
-
-            ResultSet queryOutput = statement.executeQuery();
-            queryOutput.next();
-
-            int existingUsers = queryOutput.getInt(1);
-            if (existingUsers > 0) {
-                userNameValidation.setText("Username already exists!");
-                return;
-            }
-            else if(!userPassword.equals(userPasswordCopy)){
-                userNameValidation.setText("Password does not match.");
-                return;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
-
-        String insertUserQuery = "INSERT INTO mydatabase.users (first_name, last_name, username, password, email) VALUES (?, ?, ?, ?, ?)";
-        try (Connection connectDB = DatabaseManager.getConnection();
-             PreparedStatement statement = connectDB.prepareStatement(insertUserQuery)) {
-            statement.setString(1, firstName);
-            statement.setString(2, lastName);
-            statement.setString(3, username);
-            statement.setString(4, userPassword);
-            statement.setString(5, userEmail);
-
-            statement.executeUpdate();
-
-            System.out.println("User registered successfully!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        DatabaseManager databaseManager = new DatabaseManager();
+        databaseManager.addUser(firstName+lastName, userPassword, userEmail);
 
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(com.example.swole_mate.Main.class.getResource("view/exercise_place.fxml"));
