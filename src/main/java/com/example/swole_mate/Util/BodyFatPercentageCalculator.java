@@ -1,4 +1,4 @@
-package com.example.swole_mate.model;
+package com.example.swole_mate.Util;
 
 public class BodyFatPercentageCalculator {
     public static double calculateBodyFatPercentage(double waistCm, double hipCm, double neckCm, double heightCm, String gender) {
