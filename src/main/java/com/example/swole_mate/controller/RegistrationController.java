@@ -1,6 +1,8 @@
 package com.example.swole_mate.controller;
 
 import com.example.swole_mate.Database.DatabaseManager;
+import com.example.swole_mate.Database.UserDB;
+import com.example.swole_mate.Functions.Hash;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,6 +19,7 @@ import javafx.scene.text.Text;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class RegistrationController {
     @FXML
@@ -138,48 +141,33 @@ public class RegistrationController {
         // Code to handle going back to the login page goes here
     }
 
-    public void registerUser(ActionEvent event) {
+    public void registerUser(ActionEvent event) throws SQLException {
         // 1. Get user input
+        UserDB userdb;
+        UserDB.createUserTable();
+
         String username = uName.getText();
         String email = this.email.getText();
         String password = this.password.getText(); // Assuming password is hashed before storing
 
-        // 2. Check for existing username
-        String checkUsernameQuery = "SELECT COUNT(*) FROM mydatabase.users WHERE username = ?";
-//        try (Connection connectDB = DatabaseManager.getConnection();
-//             PreparedStatement statement = connectDB.prepareStatement(checkUsernameQuery)) {
-//            statement.setString(1, username);
-//
-//            ResultSet queryOutput = statement.executeQuery();
-//            queryOutput.next();
-//
-//            int existingUsers = queryOutput.getInt(1);
-//            if (existingUsers > 0) {
-//                userNameValidation.setText("Username already exists!");
-//                return;
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//
-//            return;
-//        }
 
-        // 3. Insert user into database
-//        String insertUserQuery = "INSERT INTO mydatabase.users (username, password, email) VALUES (?, ?, ?)";
-//        try (Connection connectDB = DatabaseManager.getConnection();
-//             PreparedStatement statement = connectDB.prepareStatement(insertUserQuery)) {
-//            statement.setString(1, username);
-//            statement.setString(2, password);
-//            statement.setString(3, email);
-//
-//            statement.executeUpdate();
-//
-//            // Registration successful
-//            System.out.println("User registered successfully!");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            // Handle database connection or query execution errors
-//        }
+
+        if(UserDB.searchName("username").getUsername() != null)
+        {
+
+        }
+        else
+        {
+            Hash hash;
+            password = Hash.hashPassword(password);
+
+            UserDB.addUser(username, password, email);
+        }
+
+
+
+
+
     }
 
 
