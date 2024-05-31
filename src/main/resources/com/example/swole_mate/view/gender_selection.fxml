@@ -32,7 +32,7 @@
                                 <Font size="26.0" />
                             </font>
                         </Label>
-                        <ImageView fitHeight="211.0" fitWidth="213.0" layoutX="134.0" layoutY="69.0" onMouseClicked="#gymPlaceDone" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="211.0" fitWidth="213.0" layoutX="134.0" layoutY="69.0" onMouseClicked="#genderSelected" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@Images/daniel-apodaca-WdoQio6HPVA-unsplash%201.png" />
                             </image>
@@ -47,7 +47,7 @@
                                 <Font size="19.0" />
                             </font>
                         </Label>
-                        <ImageView fitHeight="211.0" fitWidth="213.0" layoutX="415.0" layoutY="69.0" onMouseClicked="#gymPlaceDone" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="211.0" fitWidth="213.0" layoutX="415.0" layoutY="69.0" onMouseClicked="#genderSelected" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@Images/spencer-davis-0ShTs8iPY28-unsplash%201.png" />
                             </image>

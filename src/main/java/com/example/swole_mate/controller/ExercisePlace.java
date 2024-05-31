@@ -16,7 +16,7 @@ public class ExercisePlace {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(com.example.swole_mate.Main.class.getResource("view/gender_selection.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 617);
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setTitle("Swole-Mate");
             stage.setScene(scene);
             stage.show();
