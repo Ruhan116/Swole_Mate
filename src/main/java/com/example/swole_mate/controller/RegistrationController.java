@@ -1,8 +1,12 @@
 package com.example.swole_mate.controller;
 
+import com.example.swole_mate.Main;
 import com.example.swole_mate.util.DatabaseManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -13,7 +17,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,7 +68,7 @@ public class RegistrationController {
     private TextField email;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     @FXML
     private PasswordField cPassword;
@@ -140,11 +146,13 @@ public class RegistrationController {
 
     public void registerUser(ActionEvent event) {
         // 1. Get user input
+        String firstName = fName.getText();
+        String lastName = lName.getText();
         String username = uName.getText();
-        String email = this.email.getText();
-        String password = this.password.getText(); // Assuming password is hashed before storing
+        String userEmail = email.getText();
+        String userPassword = password.getText();
+        String userPasswordCopy = cPassword.getText();
 
-        // 2. Check for existing username
         String checkUsernameQuery = "SELECT COUNT(*) FROM mydatabase.users WHERE username = ?";
         try (Connection connectDB = DatabaseManager.getConnection();
              PreparedStatement statement = connectDB.prepareStatement(checkUsernameQuery)) {
@@ -158,28 +166,43 @@ public class RegistrationController {
                 userNameValidation.setText("Username already exists!");
                 return;
             }
+            else if(!userPassword.equals(userPasswordCopy)){
+                userNameValidation.setText("Password does not match.");
+                return;
+            }
         } catch (Exception e) {
             e.printStackTrace();
-
             return;
         }
 
-        // 3. Insert user into database
-        String insertUserQuery = "INSERT INTO mydatabase.users (username, password, email) VALUES (?, ?, ?)";
+        String insertUserQuery = "INSERT INTO mydatabase.users (first_name, last_name, username, password, email) VALUES (?, ?, ?, ?, ?)";
         try (Connection connectDB = DatabaseManager.getConnection();
              PreparedStatement statement = connectDB.prepareStatement(insertUserQuery)) {
-            statement.setString(1, username);
-            statement.setString(2, password);
-            statement.setString(3, email);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3, username);
+            statement.setString(4, userPassword);
+            statement.setString(5, userEmail);
 
             statement.executeUpdate();
 
-            // Registration successful
             System.out.println("User registered successfully!");
         } catch (Exception e) {
             e.printStackTrace();
-            // Handle database connection or query execution errors
         }
+
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(com.example.swole_mate.Main.class.getResource("view/exercise_place.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 617);
+            stage.setTitle("Swole-Mate");
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (IOException exception) {
+            exception.printStackTrace();
+        }
+
     }
 
 

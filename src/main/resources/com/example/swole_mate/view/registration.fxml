@@ -51,7 +51,7 @@
                 <Rectangle2D />
             </viewport>
         </ImageView>
-        <AnchorPane id="l3" fx:id="child" layoutX="407.0" prefHeight="569.0" prefWidth="627.0">
+        <AnchorPane id="l3" fx:id="child" layoutX="408.0" prefHeight="569.0" prefWidth="627.0">
             <children>
                 <Label fx:id="emailValidation" layoutX="315.0" layoutY="513.0" textFill="#eaf6ff">
                     <font>
@@ -67,8 +67,7 @@
                 <TextField id="t2" fx:id="lName" layoutX="322.0" layoutY="221.0" onMouseClicked="#clear" prefHeight="30.0" prefWidth="199.0" />
                 <TextField id="t3" fx:id="uName" layoutX="79.0" layoutY="287.0" onMouseClicked="#clear" prefHeight="30.0" prefWidth="199.0" />
                 <TextField id="t4" fx:id="email" layoutX="322.0" layoutY="287.0" onMouseClicked="#clear" prefHeight="30.0" prefWidth="199.0" />
-                <TextField id="t5" fx:id="password" layoutX="79.0" layoutY="357.0" onMouseClicked="#clear" prefHeight="30.0" prefWidth="199.0" />
-                <PasswordField id="t6" fx:id="cPassword" layoutX="322.0" layoutY="357.0" onMouseClicked="#clear" prefHeight="30.0" prefWidth="199.0" />
+                <PasswordField id="t6" fx:id="cPassword" layoutX="322.0" layoutY="362.0" onMouseClicked="#clear" prefHeight="30.0" prefWidth="199.0" />
                 <Label id="l1" layoutX="89.0" layoutY="203.0" text="FirstName" textFill="#eaf6ff">
                     <font>
                         <Font name="System Italic" size="10.0" />
@@ -129,15 +128,7 @@
                         <Image url="@Images/giphy.gif" />
                     </image>
                 </ImageView>
-                <Button fx:id="exit" layoutX="561.0" layoutY="14.0" minWidth="28.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;">
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@Images/icons8-close-window-96.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
+                <Button fx:id="exit" layoutX="561.0" layoutY="14.0" minWidth="28.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" />
                 <Label id="l1" layoutX="334.0" layoutY="201.0" text="LastName" textFill="#eaf6ff">
                     <font>
                         <Font name="System Italic" size="10.0" />
@@ -153,6 +144,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
+            <PasswordField id="t6" fx:id="password" layoutX="79.0" layoutY="362.0" onMouseClicked="#clear" prefHeight="30.0" prefWidth="199.0" />
             </children>
         </AnchorPane>
     </children>
