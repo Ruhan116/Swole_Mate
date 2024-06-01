@@ -102,14 +102,7 @@
       </font>
     </CheckBox>
     <Button fx:id="LogInButton" layoutX="46.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#loginBtn" prefHeight="25.0" prefWidth="251.0" text="Log In" />
-    <Button fx:id="exit" layoutX="619.0" layoutY="14.0" minWidth="28.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="28.0" style="-fx-background-color: transparent;">
-      <graphic>
-        <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-          <image>
-            <Image url="@Images/icons8-close-window-96.png" />
-          </image>
-        </ImageView>
-      </graphic></Button>
+    <Button fx:id="exit" layoutX="619.0" layoutY="14.0" minWidth="28.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="28.0" style="-fx-background-color: transparent;" />
     <Label fx:id="epValidation" layoutX="63.0" layoutY="166.0" onMouseClicked="#clear">
       <font>
         <Font name="System Italic" size="8.0" />

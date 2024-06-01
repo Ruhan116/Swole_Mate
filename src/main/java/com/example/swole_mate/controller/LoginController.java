@@ -65,8 +65,18 @@ public class LoginController {
     }
 
     @FXML
-    void loginBtn(MouseEvent event) {
-        // Add logic to handle login button click
+    void loginBtn(MouseEvent e) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/Main_Dashboard.fxml"));
+            Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 617);
+            stage.setTitle("Swole-Mate");
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 
     @FXML
@@ -84,7 +94,7 @@ public class LoginController {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/registration.fxml"));
             Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 617);
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setTitle("Swole-Mate");
             stage.setScene(scene);
             stage.show();
