@@ -9,6 +9,8 @@ import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.swole_mate.Database.UserDB.createUserTable;
+
 public class DatabaseManager {
     private static final String URL = "jdbc:mysql://localhost:3306";
     private static final String USERNAME = "root";
@@ -18,15 +20,7 @@ public class DatabaseManager {
 
 
     public static void main(String[] args) {
-        try {
-            createDatabase();  // Step 1: Ensure the database exists
-            createUserTable();
-            addUser();
 
-            System.out.println("Database and table created successfully.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
     public static Connection getConnection(String dbNameString) throws SQLException {
         try {
@@ -67,118 +61,27 @@ public class DatabaseManager {
     }
 
     public static ResultSet execute_query(String query, Object... params) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
+        Connection connection = getConnection(DB_NAME);
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-        try {
-            connection = getConnection(DB_NAME);
-            preparedStatement = connection.prepareStatement(query);
-
-            for (int i = 0; i < params.length; i++) {
-                preparedStatement.setObject(i + 1, params[i]);
-            }
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            closeConnection(connection);
+        for (int i = 0; i < params.length; i++) {
+            preparedStatement.setObject(i + 1, params[i]);
         }
-        return null;
+
+        return preparedStatement.executeQuery();
     }
 
     public static void execute_update(String query, Object... params) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
+        Connection connection = getConnection(DB_NAME);
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-        try {
-            connection = getConnection(DB_NAME);
-            preparedStatement = connection.prepareStatement(query);
-
-            for (int i = 0; i < params.length; i++) {
-                preparedStatement.setObject(i + 1, params[i]);
-            }
-
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            closeConnection(connection);
+        for (int i = 0; i < params.length; i++) {
+            preparedStatement.setObject(i + 1, params[i]);
         }
+
+        preparedStatement.executeUpdate();
     }
 
-    public static void createUserTable() throws SQLException {
-        String query = "CREATE TABLE IF NOT EXISTS USERS (" +
-                "ID INT AUTO_INCREMENT PRIMARY KEY, " +
-                "USERNAME VARCHAR(20), " +
-                "PASSWORD VARCHAR(20), " +
-                "EMAIL VARCHAR(20))";
-
-        execute_update(query);
-    }
-
-    public List<User> fetchAll(String tableName) throws SQLException {
-
-
-        List<User> userList = new ArrayList<>();
-        String query = "SELECT * FROM " + tableName;
-
-        try{
-            ResultSet resultSet = execute_query(query);
-            ResultSetMetaData metaData = resultSet.getMetaData();
-            while (resultSet.next()) {
-                User pokemon = new User();
-                pokemon.mapResultSetToUser(resultSet);
-                userList.add(pokemon);
-            }
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-        }
-        return userList;
-    }
-
-    public User searchName(String tableName,String name) throws SQLException {
-
-        User user = new User();
-        String query = "SELECT * FROM " + tableName + " WHERE name = '" + name +"';";
-//        System.out.println(query);
-        try{
-            ResultSet resultSet = execute_query(query);
-            ResultSetMetaData metaData = resultSet.getMetaData();
-            while (resultSet.next()) {
-                user.mapResultSetToUser(resultSet);
-            }
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-        }
-        return user;
-    }
-
-    public static void addUser() throws SQLException {
-        User user = new User("Rifat", "Ruhan", "Wasif");
-
-        String query = "INSERT INTO USERS (USERNAME, PASSWORD, EMAIL) VALUES (?, ?, ?)";
-        execute_update(query, user.getUsername(), user.getPassword(), user.getEmail());
-        System.out.println("User successfully added");
-
-    }
 
     // Close the connection
     public static void closeConnection(Connection connection) {
@@ -192,7 +95,4 @@ public class DatabaseManager {
     }
 
 
-
-
-    // Add methods to execute queries, updates, etc.
 }
