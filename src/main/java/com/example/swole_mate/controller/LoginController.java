@@ -92,11 +92,12 @@ public class LoginController {
     @FXML
     void acc_register(ActionEvent e) {
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/registration.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/data_calculator.fxml"));
             Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setTitle("Swole-Mate");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
         }
         catch (IOException exception) {
