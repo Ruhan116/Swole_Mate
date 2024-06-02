@@ -83,7 +83,7 @@ public class DatabaseManager {
     }
 
 
-    // Close the connection
+    // Close the connection of the database
     public static void closeConnection(Connection connection) {
         if (connection != null) {
             try {
