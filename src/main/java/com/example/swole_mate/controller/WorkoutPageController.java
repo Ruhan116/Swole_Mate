@@ -1,20 +1,32 @@
 package com.example.swole_mate.controller;
 
+import com.example.swole_mate.Database.ExerciseDB;
+import com.example.swole_mate.Main;
+import com.example.swole_mate.model.Exercise;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.swole_mate.Util.Clock;
@@ -25,18 +37,108 @@ public class WorkoutPageController implements Initializable {
     private VBox Main;
 
     @FXML
+    private Label clockLabel;
+
+    @FXML
+    private Button nextButton;
+
+    @FXML
     private MediaView mediaView;
 
     @FXML
-    private Label clockLabel;
+    private Label nextExercise;
+
+    @FXML
+    private ProgressBar progressBar;
+
+    @FXML
+    private Label thisExercise;
     private File file;
     private Media media;
     private MediaPlayer mediaPlayer;
 
+    private int[] exercises;
+    private int[] durations;
+
+    private boolean finished;
+
+    private int current;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        file = new File("src/main/resources/com/example/swole_mate/view/workoutVideos/antiantiHasib.mp4");
+        finished = true;
+        current =0;
+    }
+
+    public int[] getExercises() {
+        return exercises;
+    }
+
+    // Setter for exercises
+    public void setExercises(int[] exercises) {
+        this.exercises = exercises;
+    }
+
+    // Getter for durations
+    public int[] getDurations() {
+        return durations;
+    }
+
+    // Setter for durations
+    public void setDurations(int[] durations) {
+        this.durations = durations;
+    }
+
+    public boolean getFinished()
+    {
+        return finished;
+    }
+
+    public void setFinished(boolean x)
+    {
+        finished = x;
+    }
+
+
+    public void updateLabel(int minutes, int seconds)
+    {
+        Clock clock = new Clock(minutes, seconds, clockLabel);
+        clock.startCountdown();
+        finished = clock.getFinished();
+    }
+
+    public void run(int[] exer, int[] dur) throws SQLException {
+        this.exercises = exer;
+        this.durations = dur;
+
+        update(exer, dur, 0);
+    }
+
+    public void update(int[] exer, int[] dur, int i) throws SQLException {
+        System.out.println(current);
+
+        updateLabel(dur[i],0);
+
+        ExerciseDB exerciseDB = new ExerciseDB();
+
+        List<Exercise> exerciseList = ExerciseDB.getExercisesByID(exer[i]);
+        Exercise exercise = exerciseList.get(0);
+
+        List<Exercise> nextExerciseList = ExerciseDB.getExercisesByID(exer[i]);
+        Exercise nextExer = nextExerciseList.get(0);
+
+
+        thisExercise.setText(exercise.getName());
+        if(i <2)
+        {
+            nextExercise.setText((nextExer.getName()));
+        }
+        else{
+            nextExercise.setText("Finish");
+        }
+
+        file = new File("src/main/resources/com/example/swole_mate/view/workoutVideos/"+exer[i]+".mp4");
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
@@ -63,14 +165,57 @@ public class WorkoutPageController implements Initializable {
 
         mediaPlayer.play();
 
-        updateLabel();
+
     }
 
+    @FXML
+    void nextButtonClicked(ActionEvent e) throws SQLException {
+        if(current < 2)
+        {
+            current++;
+            update( exercises, durations, current);
+        }
+        else
+        {
+            try{
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/BMI.fxml"));
+                Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+                stage.setTitle("Swole-Mate");
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.show();
+            }
+            catch (IOException exception) {
+                exception.printStackTrace();
+            }
+        }
+    }
 
-    public void updateLabel()
-    {
-        Clock clock = new Clock(0, 10, clockLabel);
-        clock.startCountdown();
+    @FXML
+    void goNext(ActionEvent e) throws SQLException {
+
+        System.out.println(current);
+        if(current < 2)
+        {
+            current++;
+            update( exercises, durations, current);
+        }
+        else
+        {
+            try{
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/BMI.fxml"));
+                Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+                stage.setTitle("Swole-Mate");
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.show();
+            }
+            catch (IOException exception) {
+                exception.printStackTrace();
+            }
+        }
     }
 
 }
