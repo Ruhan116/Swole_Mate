@@ -22,9 +22,14 @@ public class DataCalculator {
     @FXML
     TextField weight;
     @FXML
-    TextField neckSize;
+    TextField neckSizeFeet;
     @FXML
-    TextField waistSize;
+    TextField neckSizeInches;
+    @FXML
+    TextField waistSizeFeet;
+    @FXML
+    TextField waistSizeInches;
+
 
 
     @FXML
@@ -33,8 +38,8 @@ public class DataCalculator {
             int feet = Integer.parseInt(heightFeet.getText());
             int inches = Integer.parseInt(heightInches.getText());
             double weightKg = Double.parseDouble(weight.getText());
-            double neckCm = Double.parseDouble(neckSize.getText());
-            double waistCm = Double.parseDouble(waistSize.getText());
+            double neckCm = Double.parseDouble(neckSizeFeet.getText())*30.48 + Double.parseDouble(neckSizeInches.getText())*2.54;
+            double waistCm = Double.parseDouble(waistSizeFeet.getText())*30.48 + Double.parseDouble(waistSizeInches.getText())*2.54;
 
 
             double heightCm = feet * 30.48 + inches * 2.54;
@@ -63,11 +68,12 @@ public class DataCalculator {
         //
 
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/login.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/FoodTracker/DietTracker.fxml"));
             Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setTitle("Swole-Mate");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
         }
         catch (IOException exception) {

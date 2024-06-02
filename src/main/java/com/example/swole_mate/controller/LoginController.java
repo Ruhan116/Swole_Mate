@@ -67,7 +67,7 @@ public class LoginController {
     @FXML
     void loginBtn(MouseEvent e) {
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/Main_Dashboard.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/initial_form.fxml"));
             Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             Scene scene = new Scene(fxmlLoader.load(), 1000, 617);
             stage.setTitle("Swole-Mate");
@@ -92,7 +92,7 @@ public class LoginController {
     @FXML
     void acc_register(ActionEvent e) {
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/data_calculator.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/initial_form.fxml"));
             Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setTitle("Swole-Mate");
