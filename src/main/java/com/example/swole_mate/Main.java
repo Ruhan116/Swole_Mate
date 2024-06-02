@@ -17,6 +17,7 @@ public class Main extends Application {
         stage.setTitle("Swole-Mate");
         stage.setScene(scene);
         stage.show();
+        //Do you wanna build a snowman
     }
 
     public static void main(String[] args) throws SQLException {
