@@ -1,6 +1,7 @@
 package com.example.swole_mate.Database;
 
 import com.example.swole_mate.model.Exercise;
+import com.example.swole_mate.model.Food;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -170,6 +171,25 @@ public class ExerciseDB {
         return exercises;
     }
 
+    public static List<Exercise> getExercisesByID(int ID) throws SQLException {
+        List<Exercise> exercises = new ArrayList<>();
+        String query = "SELECT e.id, e.name, e.difficulty FROM exercises e WHERE e.id LIKE ?";
+        ResultSet rs = execute_query(query, "%" + Integer.toString(ID) + "%");
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String exerciseName = rs.getString("name");
+            String difficulty = rs.getString("difficulty");
+
+            Exercise exercise = new Exercise(id, exerciseName, difficulty);
+            exercise.setBodyParts(getBodyPartsForExercise(id));
+            exercises.add(exercise);
+        }
+
+        return exercises;
+    }
+
+
 
     public static List<Exercise> getExercisesByBodyPart(String bodyPartName) throws SQLException {
         List<Exercise> exercises = new ArrayList<>();
@@ -191,6 +211,8 @@ public class ExerciseDB {
 
         return exercises;
     }
+
+
 
     public static List<String> getBodyPartsForExercise(int exerciseId) throws SQLException {
         List<String> bodyParts = new ArrayList<>();
