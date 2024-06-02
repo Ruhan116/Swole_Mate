@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swole_mate.controller.DataCalculator">
+<AnchorPane id="Main" prefHeight="720.0" prefWidth="1280.0" stylesheets="@CSS/SignUp.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swole_mate.controller.DataCalculator">
    <children>
       <BorderPane layoutX="57.0" layoutY="213.0" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -30,7 +30,7 @@
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
-                  <AnchorPane id="Main" prefHeight="720.0" prefWidth="1280.0" stylesheets="@CSS/SignUp.css" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="720.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                      <children>
                         <VBox prefHeight="612.0" prefWidth="1280.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0">
                            <children>

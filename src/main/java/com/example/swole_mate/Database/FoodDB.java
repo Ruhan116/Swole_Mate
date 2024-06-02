@@ -21,10 +21,10 @@ public class FoodDB {
     public static void main(String[] args) throws SQLException {
         createFoodTable();
 
-        for(Food food: prefixSearch("Paa"))
-        {
-            System.out.println(food.getName());
-        }
+//        addFood("Ruti","1", 0.5,0.5,0.5,0.5);
+//        addFood("Daal","1", 0.5,0.5,0.5,0.5);
+//        addFood("Dim","1", 0.5,0.5,0.5,0.5);
+
     }
 
 //    Food,Quantity,Calories,Protein,Fat,Carbohydrates
@@ -71,7 +71,7 @@ public class FoodDB {
 //        }
 //    }
     public static Food searchName(String name) throws SQLException {
-        String tableName = "USERS";
+        String tableName = "FOODS";
         Food food = new Food();
         String query = "SELECT * FROM " + tableName + " WHERE NAME = '" + name +"';";
 
@@ -120,3 +120,5 @@ public class FoodDB {
 
 
 }
+
+

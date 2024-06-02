@@ -7,12 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane id="anchorpane_login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#checkBMI" prefHeight="720.0" prefWidth="1024.0" stylesheets="@CSS/Background.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swole_mate.controller.DashboardController">
+<BorderPane id="anchorpane_login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#checkBMI" prefHeight="720.0" prefWidth="1280.0" stylesheets="@CSS/Background.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swole_mate.controller.DashboardController">
    <top>
       <BorderPane prefHeight="30.0" prefWidth="1280.0" style="-fx-background-color: #1b2e44;" BorderPane.alignment="CENTER">
          <top>
@@ -28,9 +29,9 @@
             </HBox>
          </top>
          <center>
-            <Text fill="#eef6ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Swole Mate" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <Text fill="#eef6ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Swole Mate" textAlignment="CENTER" BorderPane.alignment="CENTER_RIGHT">
                <BorderPane.margin>
-                  <Insets right="50.0" top="-30.0" />
+                  <Insets right="500.0" top="-30.0" />
                </BorderPane.margin>
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -56,32 +57,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Text fill="#eef6ff" layoutX="91.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome ">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Text>
-            <Text fill="#eef6ff" layoutX="91.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RUHAN">
+            <Text fill="#eef6ff" layoutX="91.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RUHAN">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Text>
-            <Button fx:id="accountSetting" layoutX="38.0" layoutY="170.0" mnemonicParsing="false" styleClass="navButtons" text="Account Setting">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="-25.0">
-                     <image>
-                        <Image url="@Images/account_Setting.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="logOut" layoutX="38.0" layoutY="210.0" mnemonicParsing="false" styleClass="navButtons" text="LogOut">
+            <Button fx:id="logOut" layoutX="41.0" layoutY="263.0" mnemonicParsing="false" styleClass="navButtons" text="LogOut">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -96,7 +77,7 @@
                   <Font size="12.0" />
                </font>
             </Button>
-            <Button fx:id="dashBoard" layoutX="38.0" layoutY="278.0" mnemonicParsing="false" styleClass="navButtons" text="Dashboard">
+            <Button fx:id="dashBoard" layoutX="38.0" layoutY="212.0" mnemonicParsing="false" styleClass="navButtons" text="Dashboard">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -111,57 +92,38 @@
                   <Font size="12.0" />
                </font>
             </Button>
-            <Button fx:id="members" layoutX="38.0" layoutY="318.0" mnemonicParsing="false" styleClass="navButtons" text="Friends">
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="-25.0">
-                     <image>
-                        <Image url="@Images/members.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="enquiries" layoutX="37.0" layoutY="357.0" mnemonicParsing="false" styleClass="navButtons" text="Goals">
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="-25.0">
-                     <image>
-                        <Image url="@Images/queries.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="equipments" layoutX="35.0" layoutY="402.0" mnemonicParsing="false" styleClass="navButtons" text="Workouts">
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="-25.0">
-                     <image>
-                        <Image url="@Images/equipments.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Button>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef6ff" height="1.0" layoutX="37.0" layoutY="254.0" stroke="#eef6ff" strokeType="INSIDE" width="160.0" />
             <Circle fill="#eef6ff" layoutX="52.0" layoutY="108.0" radius="25.0" stroke="#eef6ff" strokeType="INSIDE" />
          </children>
       </AnchorPane>
    </left>
    <center>
-      <Button mnemonicParsing="false" onMouseClicked="#checkBMI" text="BMI Calculator" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="690.0" prefWidth="984.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="312.0" prefWidth="1060.0">
+               <children>
+                  <AnchorPane id="Main" prefHeight="312.0" prefWidth="1098.0" stylesheets="@CSS/SignUp.css">
+                     <HBox.margin>
+                        <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="1060.0">
+               <children>
+                  <AnchorPane id="Main" prefHeight="200.0" prefWidth="200.0" stylesheets="@CSS/SignUp.css" />
+                  <AnchorPane id="Main" prefHeight="200.0" prefWidth="200.0" stylesheets="@CSS/SignUp.css">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <AnchorPane id="Main" prefHeight="200.0" prefWidth="526.0" stylesheets="@CSS/SignUp.css" />
+               </children>
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
    </center>
 </BorderPane>
