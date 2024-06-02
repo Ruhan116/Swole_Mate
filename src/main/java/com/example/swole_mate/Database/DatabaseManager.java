@@ -14,7 +14,7 @@ import static com.example.swole_mate.Database.UserDB.createUserTable;
 public class DatabaseManager {
     private static final String URL = "jdbc:mysql://localhost:3306";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "1234";
+    private static final String PASSWORD = "password";
 
     private static final String DB_NAME = "SWOLEMATE";
 
@@ -83,7 +83,7 @@ public class DatabaseManager {
     }
 
 
-    // Close the connection
+    // Close the connection of the database
     public static void closeConnection(Connection connection) {
         if (connection != null) {
             try {
