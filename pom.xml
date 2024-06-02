@@ -52,6 +52,11 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>22-ea+11</version>
+        </dependency>
     </dependencies>
 
     <build>
