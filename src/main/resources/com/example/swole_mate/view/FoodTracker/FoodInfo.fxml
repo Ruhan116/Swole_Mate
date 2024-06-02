@@ -2,22 +2,21 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="Main" prefHeight="635.0" prefWidth="635.0" stylesheets="@../CSS/SignUp.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swole_mate.view.FoodTracker.FoodInfo">
+<AnchorPane id="Main" prefHeight="400.0" prefWidth="400.0" stylesheets="@../CSS/SignUp.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swole_mate.controller.FoodInfo">
    <children>
       <BorderPane prefHeight="635.0" prefWidth="635.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <HBox id="Main" alignment="CENTER" prefHeight="84.0" prefWidth="635.0" stylesheets="@../CSS/SignUp.css" BorderPane.alignment="CENTER">
+            <HBox id="Main" alignment="CENTER" prefHeight="21.0" prefWidth="400.0" stylesheets="@../CSS/SignUp.css" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" text="Food Name" textFill="WHITE">
+                  <Label fx:id="foodNameLabel" alignment="CENTER" text="Food Name" textFill="WHITE">
                      <font>
                         <Font size="26.0" />
                      </font>
@@ -26,100 +25,127 @@
             </HBox>
          </top>
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="500.0" prefWidth="400.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="287.0" fitWidth="279.0" layoutX="31.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
-                  <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="322.0" prefHeight="200.0" prefWidth="346.0" spacing="25.0">
+                  <VBox alignment="CENTER" layoutX="-10.0" prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label contentDisplay="CENTER" text="Food Name" textFill="WHITE">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Text fill="#dcdcdc" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="307.91563987731934">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label text="No. of Servings:" textFill="WHITE">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <TextField id="t3" fx:id="serving_size" prefHeight="26.0" prefWidth="77.0" stylesheets="@../CSS/Main_App.css" />
+                           </children>
+                        </HBox>
+                        <VBox alignment="CENTER" prefHeight="220.0" prefWidth="400.0" spacing="20.0">
+                           <children>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="58.0" prefHeight="43.0" prefWidth="295.0">
+                                 <children>
+                                    <Label alignment="CENTER" text="Macronutrients and Calories" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="120.0" layoutY="66.0" prefHeight="43.0" prefWidth="295.0" spacing="50.0">
+                                 <children>
+                                    <Label fx:id="serve" text="Serving Size" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="serve" layoutX="10.0" layoutY="10.0" text="xx%" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="80.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox prefHeight="43.0" prefWidth="295.0" spacing="50.0">
+                                 <children>
+                                    <Label text="Protein:" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="protein" layoutX="10.0" layoutY="10.0" text="xx%" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="80.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="38.0" prefHeight="43.0" prefWidth="295.0" spacing="50.0">
+                                 <children>
+                                    <Label text="Fat" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="fat" layoutX="10.0" layoutY="10.0" text="xx%" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="80.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="81.0" prefHeight="43.0" prefWidth="295.0" spacing="50.0">
+                                 <children>
+                                    <Label text="Carbohydrate:" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="carbs" layoutX="10.0" layoutY="10.0" text="xx%" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="80.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="124.0" prefHeight="43.0" prefWidth="295.0" spacing="50.0">
+                                 <children>
+                                    <Label text="Calories" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="cals" layoutX="10.0" layoutY="10.0" text="xx%" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="80.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </VBox>
                      </children>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
                   </VBox>
                </children>
             </AnchorPane>
          </center>
-         <right>
-            <AnchorPane prefHeight="551.0" prefWidth="295.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox prefHeight="551.2" prefWidth="295.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label text="Macronutrients and Calories:" textFill="WHITE">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Label>
-                        <HBox prefHeight="43.0" prefWidth="295.0">
-                           <children>
-                              <Label text="Protein:" textFill="WHITE">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="10.0" layoutY="10.0" text="xx%" textFill="WHITE">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="38.0" prefHeight="43.0" prefWidth="295.0">
-                           <children>
-                              <Label text="Fat" textFill="WHITE">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="10.0" layoutY="10.0" text="xx%" textFill="WHITE">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="81.0" prefHeight="43.0" prefWidth="295.0">
-                           <children>
-                              <Label text="Carbohydrate:" textFill="WHITE">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="10.0" layoutY="10.0" text="xx%" textFill="WHITE">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="124.0" prefHeight="43.0" prefWidth="295.0">
-                           <children>
-                              <Label text="Protein:" textFill="WHITE">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="10.0" layoutY="10.0" text="xx%" textFill="WHITE">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </right>
       </BorderPane>
    </children>
 </AnchorPane>

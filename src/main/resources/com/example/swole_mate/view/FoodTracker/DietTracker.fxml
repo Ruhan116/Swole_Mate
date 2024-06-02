@@ -22,7 +22,7 @@
                         <VBox layoutX="209.0" layoutY="115.0" prefHeight="616.0" prefWidth="635.2" spacing="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <TextField id="t3" fx:id="searchBox" stylesheets="@../CSS/Main_App.css" />
-                              <AnchorPane prefHeight="631.0" prefWidth="635.0" />
+                              <AnchorPane fx:id="loadFood" prefHeight="631.0" prefWidth="635.0" />
                            </children>
                            <padding>
                               <Insets bottom="40.0" left="30.0" right="30.0" top="40.0" />
@@ -46,13 +46,13 @@
                                     <Insets left="80.0" />
                                  </VBox.margin>
                               </HBox>
-                              <PieChart />
+                              <PieChart fx:id="nutrientPieChart" />
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                        <children>
                                           <Label text="Protein: " />
-                                          <Label text="xx%" />
+                                          <Label fx:id="protLabel" text="xx%" />
                                        </children>
                                        <VBox.margin>
                                           <Insets left="80.0" />
@@ -64,7 +64,7 @@
                                     <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                        <children>
                                           <Label text="Fats" />
-                                          <Label text="xx%" />
+                                          <Label fx:id="fatLabel" text="xx%" />
                                        </children>
                                        <VBox.margin>
                                           <Insets left="80.0" />
@@ -76,7 +76,7 @@
                                     <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                        <children>
                                           <Label text="Carbohydrate" />
-                                          <Label text="xx%" />
+                                          <Label fx:id="carbsLabel" text="xx%" />
                                        </children>
                                        <VBox.margin>
                                           <Insets left="80.0" />
@@ -88,7 +88,7 @@
                                     <HBox alignment="CENTER_LEFT" layoutX="110.0" layoutY="140.0" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                        <children>
                                           <Label text="Total Calories" />
-                                          <Label text="kcal" />
+                                          <Label fx:id="calsLabel" text="kcal" />
                                        </children>
                                        <padding>
                                           <Insets left="10.0" />
