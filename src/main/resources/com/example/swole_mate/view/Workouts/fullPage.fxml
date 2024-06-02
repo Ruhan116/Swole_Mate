@@ -20,19 +20,13 @@
             <MediaView fx:id="mediaView" fitHeight="720.0" fitWidth="500.0" />
             <VBox fx:id="Main" alignment="CENTER" prefHeight="730.0" prefWidth="842.0" spacing="20.0">
                <children>
-                  <HBox prefHeight="46.0" prefWidth="500.0" style="-fx-background-color: lightgray;">
+                  <HBox prefHeight="171.0" prefWidth="700.0" style="-fx-background-color: lightgray;">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="119.0" prefWidth="170.0" text="&lt;&lt;&lt;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                           <font>
-                              <Font size="29.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="thisExercise" prefHeight="109.0" prefWidth="162.0" text="Label">
+                        <Label fx:id="thisExercise" alignment="CENTER" prefHeight="105.0" prefWidth="701.0" text="Label">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="107.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
                   <AnchorPane prefHeight="375.0" prefWidth="507.0">
@@ -44,14 +38,14 @@
                         </Label>
                         <Circle fill="#f5fff8" layoutX="349.0" layoutY="194.0" opacity="0.13" radius="144.0" stroke="BLACK" strokeWidth="5.0" />
                         <ProgressBar fx:id="progressBar" layoutX="185.0" layoutY="21.0" prefHeight="10.0" prefWidth="328.0" progress="1.0" />
-                        <Button layoutX="264.0" layoutY="103.0" mnemonicParsing="false" prefHeight="166.0" prefWidth="169.0" style="-fx-background-radius: 50%;" text="Button" />
-                        <ImageView fitHeight="148.0" fitWidth="169.0" layoutX="276.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+                        <Button fx:id="nextButton" disable="true" layoutX="264.0" layoutY="103.0" mnemonicParsing="false" onAction="#nextButtonClicked" prefHeight="166.0" prefWidth="169.0" style="-fx-background-radius: 50%;" text="Button" visible="false" />
+                        <ImageView disable="true" fitHeight="148.0" fitWidth="169.0" layoutX="276.0" layoutY="112.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@../icons/tick.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="55.0" layoutY="136.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="114.0" text="Button" />
-                        <Button layoutX="523.0" layoutY="136.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="114.0" text="Button" />
+                        <Button fx:id="puaseButton" layoutX="55.0" layoutY="136.0" mnemonicParsing="false" onAction="#PauseAndContinue" prefHeight="108.0" prefWidth="114.0" style="-fx-background-radius: 50%; -fx-background-image: url(&quot;&quot;);" />
+                        <Button fx:id="skipButton" layoutX="523.0" layoutY="136.0" mnemonicParsing="false" onAction="#goNext" prefHeight="108.0" prefWidth="114.0" style="-fx-background-radius: 50%;" />
                      </children>
                      <padding>
                         <Insets bottom="20.0" top="10.0" />
@@ -62,13 +56,10 @@
                   </AnchorPane>
                   <HBox prefHeight="178.0" prefWidth="500.0" style="-fx-background-color: lightgray;">
                      <children>
-                        <ImageView fitHeight="107.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="prevExercise" prefHeight="119.0" prefWidth="170.0" text="Label" />
-                        <Label prefHeight="109.0" prefWidth="162.0" text="&gt;&gt;&gt;" textFill="WHITE">
+                        <Label fx:id="nextExercise" alignment="CENTER" prefHeight="108.0" prefWidth="703.0" text="Label">
                            <font>
-                              <Font size="29.0" />
-                           </font>
-                        </Label>
+                              <Font size="22.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                </children>

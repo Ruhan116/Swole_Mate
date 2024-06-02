@@ -32,7 +32,7 @@ public class AllWorkouts {
     public void initialize() throws SQLException {
         // Example of populating the grid with ProgramCards
 
-        ProgramDB programDB;
+        ProgramDB programDB = new ProgramDB();
         List<Program> programs =  ProgramDB.fetchAll();
 
         for (int row = 0; row < 3; row++) {
@@ -51,6 +51,7 @@ public class AllWorkouts {
                     programCardController.setPointsLabel(Integer.toString(program.getPoints()));
                     programCardController.setTypeLabel(program.getType());
                     programCardController.setWorkoutNumbers(Integer.toString(program.getWorkoutNumbers()));
+                    programCardController.setID(program.getID());
 
                     // Add ProgramCard to GridPane
                     programGrid.add(programCard, col, row);

@@ -42,6 +42,13 @@ public class Clock {
         timeline.play();
     }
 
+    public boolean getFinished()
+    {
+        return minutes == 0 && seconds == 0;
+    }
+
+
+
     private void updateLabel() {
         String minuteString = String.format("%02d", minutes);
         String secondString = String.format("%02d", seconds);
