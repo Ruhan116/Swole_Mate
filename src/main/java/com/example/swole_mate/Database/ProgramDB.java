@@ -13,20 +13,17 @@ import static com.example.swole_mate.Database.DatabaseManager.execute_update;
 
 public class ProgramDB {
 
+
+    public ProgramDB()
+    {}
+
     public static void main(String[] args) throws SQLException {
 
         createProgramTable();
 
-        addProgram("Cardio", "Easy", "30", 3, 200, 1, 10, 2, 15, 3, 20);
-        addProgram("Cardio", "Medium", "40", 3, 300, 2, 10, 3, 15, 4, 20);
-        addProgram("Cardio", "Hard", "50", 3, 400, 3, 10, 4, 15, 5, 20);
-        addProgram("Weight Training", "Easy", "30", 3, 300, 4, 10, 5, 15, 1, 20);
-        addProgram("Weight Training", "Medium", "40", 3, 400, 5, 10, 1, 15, 2, 20);
-        addProgram("Weight Training", "Hard", "50", 3, 500, 1, 10, 2, 15, 3, 20);
-        addProgram("Calisthenics", "Easy", "40", 3, 400, 2, 10, 3, 15, 4, 20);
-        addProgram("Calisthenics", "Medium", "50", 3, 500, 3, 10, 4, 15, 5, 20);
-        addProgram("Calisthenics", "Hard", "60", 3, 600, 4, 10, 5, 15, 1, 20);
+        System.out.println(fetchProg(1).getType());
     }
+
 
     public static void createProgramTable() throws SQLException {
         String query = "CREATE TABLE IF NOT EXISTS PROGRAMS (" +
@@ -67,6 +64,24 @@ public class ProgramDB {
             e.printStackTrace();
         }
         return programList;
+    }
+
+    public static Program fetchProg(int prog) throws SQLException {
+
+        String tableName = "PROGRAMS";
+        Program program = new Program();
+        String query = "SELECT * FROM " + tableName + " WHERE ID = '" + Integer.toString(prog) +"';";
+
+        try{
+            ResultSet resultSet = execute_query(query);
+            while (resultSet.next()) {
+                program.mapResultSetToProgram(resultSet);
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return program;
     }
 
     public static void addProgram(String type, String difficulty, String duration, int workoutNumbers, int points,

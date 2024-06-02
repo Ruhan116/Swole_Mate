@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Program {
-
+    private int ID;
     private String type;
     private String difficulty;
     private String duration;
@@ -41,6 +41,14 @@ public class Program {
     // Getters and setters
     public String getType() {
         return type;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public void setType(String type) {
@@ -128,6 +136,7 @@ public class Program {
     }
 
     public void mapResultSetToProgram(ResultSet resultSet) throws SQLException {
+        this.setID(resultSet.getInt("ID"));
         this.setType(resultSet.getString("TYPE"));
         this.setDifficulty(resultSet.getString("DIFFICULTY"));
         this.setDuration(resultSet.getString("DURATION"));

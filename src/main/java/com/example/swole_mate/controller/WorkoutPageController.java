@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -53,6 +54,14 @@ public class WorkoutPageController implements Initializable {
 
     @FXML
     private Label thisExercise;
+
+    @FXML
+    private Button puaseButton;
+
+    @FXML
+    private Button skipButton;
+
+
     private File file;
     private Media media;
     private MediaPlayer mediaPlayer;
@@ -64,11 +73,14 @@ public class WorkoutPageController implements Initializable {
 
     private int current;
 
+    private boolean paused;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         finished = true;
         current =0;
+        paused = false;
     }
 
     public int[] getExercises() {
@@ -166,6 +178,25 @@ public class WorkoutPageController implements Initializable {
         mediaPlayer.play();
 
 
+        if(paused){
+            ImageView pauseView = new ImageView(Main.class.getResource("view/icons/continue.png").toExternalForm());
+            pauseView.setFitWidth(puaseButton.getWidth()); // Set the fitWidth to match the button's width
+            pauseView.setFitHeight(puaseButton.getHeight()); // Set the fitHeight to match the button's height
+            puaseButton.setGraphic(pauseView);
+        }
+        else{
+            ImageView pauseView = new ImageView(Main.class.getResource("view/icons/pause.png").toExternalForm());
+            pauseView.setFitWidth(puaseButton.getWidth()); // Set the fitWidth to match the button's width
+            pauseView.setFitHeight(puaseButton.getHeight()); // Set the fitHeight to match the button's height
+            puaseButton.setGraphic(pauseView);
+        }
+
+        ImageView skipView = new ImageView(Main.class.getResource("view/icons/skip.png").toExternalForm());
+        skipView.setFitWidth(skipButton.getWidth()); // Set the fitWidth to match the button's width
+        skipView.setFitHeight(skipButton.getHeight()); // Set the fitHeight to match the button's height
+        skipButton.setGraphic(skipView);
+
+
     }
 
     @FXML
@@ -215,6 +246,17 @@ public class WorkoutPageController implements Initializable {
             catch (IOException exception) {
                 exception.printStackTrace();
             }
+        }
+    }
+
+    @FXML
+    void PauseAndContinue(ActionEvent event) {
+        if(paused)
+        {
+
+        }
+        else{
+
         }
     }
 
