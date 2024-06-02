@@ -5,6 +5,7 @@ module com.example.swole_mate {
     requires org.controlsfx.controls;
 
     requires org.kordamp.bootstrapfx.core;
+    requires javafx.media;
 
     opens com.example.swole_mate to javafx.fxml;
     exports com.example.swole_mate;
