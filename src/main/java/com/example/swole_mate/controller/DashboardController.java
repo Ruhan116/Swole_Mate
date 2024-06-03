@@ -27,7 +27,7 @@ public class DashboardController {
 
     @FXML
     private void close(ActionEvent event) {
-        // Define the behavior for closing the window here
+        // Define the behavior for closing the window here sync fix
     }
 
     @FXML
