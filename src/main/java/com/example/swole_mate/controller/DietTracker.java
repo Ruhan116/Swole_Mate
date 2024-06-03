@@ -87,7 +87,7 @@ public class DietTracker {
             e.printStackTrace();
         }
     }
-
+    // Event Handling
     private void handleEnterKey(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             try {
