@@ -83,6 +83,8 @@ public class UserDB {
         return user;
     }
 
+
+
     public static void addUser(String username, String password, String email, String firstName, String lastName, String phoneNumber) throws SQLException {
         LocalDate joinDate = LocalDate.now();
 

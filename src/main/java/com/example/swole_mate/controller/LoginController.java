@@ -1,6 +1,9 @@
 package com.example.swole_mate.controller;
 
+import com.example.swole_mate.Database.UserDB;
+import com.example.swole_mate.Functions.Hash;
 import com.example.swole_mate.Main;
+import com.example.swole_mate.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -14,7 +17,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.xml.sax.helpers.ParserAdapter;
+import javafx.scene.text.Text;
+
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 public class LoginController {
@@ -30,6 +37,9 @@ public class LoginController {
 
     @FXML
     private CheckBox response;
+
+    @FXML
+    private Text errMsg;
 
     @FXML
     private Button LogInButton;
@@ -65,18 +75,41 @@ public class LoginController {
     }
 
     @FXML
-    void loginBtn(MouseEvent e) {
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/initial_form.fxml"));
-            Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 617);
-            stage.setTitle("Swole-Mate");
-            stage.setScene(scene);
-            stage.show();
+    void loginBtn(MouseEvent e) throws SQLException {
+        String username = EmailField.getText();
+        String password = PassField.getText();
+
+        UserDB userdb = new UserDB();
+        User user = userdb.searchName(username);
+        System.out.println(user);
+
+        if(user.getUsername() != null)
+        {
+            Hash hash = new Hash();
+            if(Hash.verifyPassword(password, user.getPassword()))
+            {
+                try{
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/Main_Dashboard.fxml"));
+                    Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+                    stage.setTitle("Swole-Mate");
+                    stage.setScene(scene);
+                    stage.centerOnScreen();
+                    stage.show();
+                }
+                catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+            else {
+                errMsg.setText("Incorrect Password. Please try again.");
+            }
         }
-        catch (IOException exception) {
-            exception.printStackTrace();
+        else{
+            errMsg.setText("This account does not exist. Please try again.");
         }
+
+
     }
 
     @FXML
@@ -87,6 +120,7 @@ public class LoginController {
     @FXML
     void pressed(MouseEvent event) {
         // Add logic to handle window dragging
+
     }
 
     @FXML

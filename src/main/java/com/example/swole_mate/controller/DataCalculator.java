@@ -30,6 +30,16 @@ public class DataCalculator {
     @FXML
     TextField waistSizeInches;
 
+    private String username;
+
+    public void setName(String data) {
+        username = data; // For example, set the text of a label
+    }
+
+    public String getName() {
+        return username; // For example, set the text of a label
+    }
+
 
 
     @FXML
@@ -68,7 +78,7 @@ public class DataCalculator {
         //
 
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/FoodTracker/DietTracker.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/Main_Dashboard.fxml"));
             Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setTitle("Swole-Mate");

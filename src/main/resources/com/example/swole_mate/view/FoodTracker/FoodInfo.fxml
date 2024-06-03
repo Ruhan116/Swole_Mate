@@ -31,7 +31,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="img" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" />
                               <Label text="No. of Servings:" textFill="WHITE">
                                  <font>
                                     <Font size="17.0" />

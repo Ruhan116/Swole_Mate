@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public class User {
     private int id;
+
     private String username;
     private String password;
     private String email;
@@ -14,6 +15,8 @@ public class User {
     private String lastName;
     private String phoneNumber;
     private LocalDate joinDate;
+    private int height;
+    private int weight;
 
     // Default constructor
     public User() {}
@@ -39,6 +42,25 @@ public class User {
     }
 
     // Getters and setters
+
+    public int getHeight() {
+        return height;
+    }
+
+    // Setter for height
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    // Getter for weight
+    public int getWeight() {
+        return weight;
+    }
+
+    // Setter for weight
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
     public int getId() {
         return id;
     }

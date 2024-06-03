@@ -4,6 +4,8 @@ import com.example.swole_mate.model.Food;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class FoodInfo {
 
@@ -28,6 +30,9 @@ public class FoodInfo {
     @FXML
     private TextField serving_size;
 
+    @FXML
+    ImageView img;
+
     private DietTracker dietTrackerController;
 
     public void setFood(Food food) {
@@ -38,6 +43,8 @@ public class FoodInfo {
         carbs.setText(String.valueOf(food.getCarbs()));
         cals.setText(String.valueOf(food.getCalorie()));
 
+        Image image = new Image("/com/example/swole_mate/view/images/" +food.getName() + ".png");
+        img.setImage(image);
         serving_size.setOnAction(event -> {
             try {
                 int servingSize = Integer.parseInt(serving_size.getText());

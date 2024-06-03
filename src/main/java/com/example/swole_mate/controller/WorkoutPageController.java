@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.shape.Circle;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -39,6 +40,10 @@ public class WorkoutPageController implements Initializable {
 
     @FXML
     private Label clockLabel;
+
+    @FXML
+    private Circle clockCircle;
+
 
     @FXML
     private Button nextButton;
@@ -74,6 +79,8 @@ public class WorkoutPageController implements Initializable {
     private int current;
 
     private boolean paused;
+
+    private Clock myClock;
 
 
     @Override
@@ -115,9 +122,18 @@ public class WorkoutPageController implements Initializable {
 
     public void updateLabel(int minutes, int seconds)
     {
-        Clock clock = new Clock(minutes, seconds, clockLabel);
-        clock.startCountdown();
-        finished = clock.getFinished();
+        myClock = new Clock(minutes, seconds, clockLabel);
+        myClock.startCountdown();
+
+        finished = myClock.getFinished();
+
+        if(finished)
+        {
+            clockCircle.setVisible(false);
+            nextButton.setVisible(true);
+            nextButton.setDisable(false);
+
+        }
     }
 
     public void run(int[] exer, int[] dur) throws SQLException {
@@ -137,8 +153,12 @@ public class WorkoutPageController implements Initializable {
         List<Exercise> exerciseList = ExerciseDB.getExercisesByID(exer[i]);
         Exercise exercise = exerciseList.get(0);
 
-        List<Exercise> nextExerciseList = ExerciseDB.getExercisesByID(exer[i]);
-        Exercise nextExer = nextExerciseList.get(0);
+        Exercise nextExer = null;
+        if(i<2)
+        {
+            List<Exercise> nextExerciseList = ExerciseDB.getExercisesByID(exer[i+1]);
+            nextExer = nextExerciseList.get(0);
+        }
 
 
         thisExercise.setText(exercise.getName());
@@ -178,29 +198,27 @@ public class WorkoutPageController implements Initializable {
         mediaPlayer.play();
 
 
-        if(paused){
-            ImageView pauseView = new ImageView(Main.class.getResource("view/icons/continue.png").toExternalForm());
-            pauseView.setFitWidth(puaseButton.getWidth()); // Set the fitWidth to match the button's width
-            pauseView.setFitHeight(puaseButton.getHeight()); // Set the fitHeight to match the button's height
-            puaseButton.setGraphic(pauseView);
-        }
-        else{
-            ImageView pauseView = new ImageView(Main.class.getResource("view/icons/pause.png").toExternalForm());
-            pauseView.setFitWidth(puaseButton.getWidth()); // Set the fitWidth to match the button's width
-            pauseView.setFitHeight(puaseButton.getHeight()); // Set the fitHeight to match the button's height
-            puaseButton.setGraphic(pauseView);
-        }
+        ImageView pauseView = new ImageView(Main.class.getResource("view/icons/pause.png").toExternalForm());
+        pauseView.setFitWidth(puaseButton.getWidth()); // Set the fitWidth to match the button's width
+        pauseView.setFitHeight(puaseButton.getHeight()); // Set the fitHeight to match the button's height
+        puaseButton.setGraphic(pauseView);
 
         ImageView skipView = new ImageView(Main.class.getResource("view/icons/skip.png").toExternalForm());
         skipView.setFitWidth(skipButton.getWidth()); // Set the fitWidth to match the button's width
         skipView.setFitHeight(skipButton.getHeight()); // Set the fitHeight to match the button's height
         skipButton.setGraphic(skipView);
 
+        ImageView nextView = new ImageView(Main.class.getResource("view/icons/tick.png").toExternalForm());
+        nextView.setFitWidth(nextButton.getWidth()); // Set the fitWidth to match the button's width
+        nextView.setFitHeight(nextButton.getHeight()); // Set the fitHeight to match the button's height
+        nextButton.setGraphic(nextView);
+
 
     }
 
     @FXML
     void nextButtonClicked(ActionEvent e) throws SQLException {
+        myClock.startCountdown();
         if(current < 2)
         {
             current++;
@@ -225,7 +243,6 @@ public class WorkoutPageController implements Initializable {
 
     @FXML
     void goNext(ActionEvent e) throws SQLException {
-
         System.out.println(current);
         if(current < 2)
         {
@@ -235,7 +252,7 @@ public class WorkoutPageController implements Initializable {
         else
         {
             try{
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/BMI.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/pointsAdded.fxml"));
                 Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
                 Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
                 stage.setTitle("Swole-Mate");
@@ -253,10 +270,20 @@ public class WorkoutPageController implements Initializable {
     void PauseAndContinue(ActionEvent event) {
         if(paused)
         {
-
+            myClock.Continue();
+            ImageView pauseView = new ImageView(Main.class.getResource("view/icons/pause.png").toExternalForm());
+            pauseView.setFitWidth(puaseButton.getWidth()-17); // Set the fitWidth to match the button's width
+            pauseView.setFitHeight(puaseButton.getHeight()-17); // Set the fitHeight to match the button's height
+            puaseButton.setGraphic(pauseView);
+            paused = false;
         }
         else{
-
+            myClock.Pause();
+            ImageView pauseView = new ImageView(Main.class.getResource("view/icons/continue.png").toExternalForm());
+            pauseView.setFitWidth(puaseButton.getWidth()-17); // Set the fitWidth to match the button's width
+            pauseView.setFitHeight(puaseButton.getHeight()-17); // Set the fitHeight to match the button's height
+            puaseButton.setGraphic(pauseView);
+            paused = true;
         }
     }
 

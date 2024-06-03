@@ -31,11 +31,11 @@ public class DashboardController {
     }
 
     @FXML
-    void checkBMI(MouseEvent event) {
+    void goToExercise(MouseEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/BMI.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/Workouts/AllWorkouts.fxml"));
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 617);
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setTitle("Swole-Mate");
             stage.setScene(scene);
             stage.show();
@@ -43,6 +43,18 @@ public class DashboardController {
             exception.printStackTrace();
         }
     }
-
+    @FXML
+    void goToFood(MouseEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/FoodTracker/DietTracker.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setTitle("Swole-Mate");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
 
 }

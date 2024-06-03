@@ -1,15 +1,21 @@
 package com.example.swole_mate.controller;
 
+import com.example.swole_mate.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 
@@ -26,6 +32,8 @@ public class DietTracker {
     @FXML
     private TextField searchBox;
 
+    @FXML
+    private Button backButton;
     @FXML
     private AnchorPane loadFood;
 
@@ -99,6 +107,22 @@ public class DietTracker {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+    @FXML
+    void goBack(ActionEvent event) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/Main_Dashboard.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setTitle("Swole-Mate");
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        }
+        catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 

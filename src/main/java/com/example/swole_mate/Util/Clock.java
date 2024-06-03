@@ -12,6 +12,8 @@ public class Clock {
     private int minutes = 1; // Set the initial minutes
     private int seconds = 30; // Set the initial seconds
 
+    private boolean finished;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -21,6 +23,7 @@ public class Clock {
         this.minutes = minutes;
         this.seconds = seconds;
         this.timeLabel = label;
+        this.finished = false;
     }
 
     public void startCountdown() {
@@ -28,6 +31,7 @@ public class Clock {
             if (seconds == 0) {
                 if (minutes == 0) {
                     timeline.stop();
+                    finished = true;
                 } else {
                     minutes--;
                     seconds = 59;
@@ -41,6 +45,16 @@ public class Clock {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+
+    public void Pause() {
+        timeline.pause();
+    }
+
+    public void Continue() {
+        timeline.play();
+    }
+
+
 
     public boolean getFinished()
     {

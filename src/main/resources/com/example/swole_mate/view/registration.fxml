@@ -98,7 +98,7 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Text fill="WHITE" layoutX="79.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To be a Member of Hit Fit. Create an Account Right Now" wrappingWidth="302.33331298828125">
+                <Text fill="WHITE" layoutX="79.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To be a Member of Swole-Mate. Create an Account Right Now" wrappingWidth="302.33331298828125">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -145,6 +145,7 @@
                     </graphic>
                 </Button>
             <PasswordField id="t6" fx:id="password" layoutX="79.0" layoutY="362.0" onMouseClicked="#clear" prefHeight="30.0" prefWidth="199.0" />
+            <Text fx:id="errorMessage" fill="#fa0000" layoutX="79.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="302.33331298828125" />
             </children>
         </AnchorPane>
     </children>

@@ -37,6 +37,16 @@ public class InitialForm {
     @FXML
     private Button submitButton;
 
+    private String username;
+
+    public void setName(String data) {
+        username = data; // For example, set the text of a label
+    }
+
+    public String getName() {
+        return username; // For example, set the text of a label
+    }
+
     @FXML
     public void initialize() {
         // Initialization code if needed

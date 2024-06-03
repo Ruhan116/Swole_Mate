@@ -6,6 +6,7 @@ import com.example.swole_mate.model.Food;
 import com.example.swole_mate.model.Program;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -27,9 +28,19 @@ public class AllWorkouts {
     @FXML
     private GridPane weeklyGrid;
 
+    @FXML
+    private AnchorPane dailyTrack;
 
 
-    public void initialize() throws SQLException {
+    @FXML
+    private AnchorPane recordTrack;
+
+    @FXML
+    private AnchorPane weeklyTrack;
+
+
+
+    public void initialize() throws SQLException, IOException {
         // Example of populating the grid with ProgramCards
 
         ProgramDB programDB = new ProgramDB();
@@ -60,6 +71,56 @@ public class AllWorkouts {
                 }
             }
         }
+
+        // Load daily values
+        // Load daily values
+        FXMLLoader dailyvaluesLoader = new FXMLLoader(getClass().getResource("/com/example/swole_mate/view/Workouts/values.fxml"));
+        AnchorPane dailyTrackValue = dailyvaluesLoader.load();
+        Values dailyValue = dailyvaluesLoader.getController();
+        dailyValue.setDistanceLabel(5);
+        dailyValue.setCaloriesLabel(6);
+        dailyValue.setDurationLabel(7);
+        dailyValue.setPointsLabel(8);
+
+// Set the loaded content into the AnchorPane
+        dailyTrack.getChildren().setAll(dailyTrackValue);
+
+// Adjust the size of the loaded content to match the size of the AnchorPane
+        dailyTrackValue.prefWidthProperty().bind(dailyTrack.widthProperty());
+        dailyTrackValue.prefHeightProperty().bind(dailyTrack.heightProperty());
+
+// Load weekly values
+        FXMLLoader weeklyvaluesLoader = new FXMLLoader(getClass().getResource("/com/example/swole_mate/view/Workouts/values.fxml"));
+        AnchorPane weeklyTrackValue = weeklyvaluesLoader.load();
+        Values weeklyValue = weeklyvaluesLoader.getController();
+        weeklyValue.setDistanceLabel(5);
+        weeklyValue.setCaloriesLabel(6);
+        weeklyValue.setDurationLabel(7);
+        weeklyValue.setPointsLabel(8);
+
+// Set the loaded content into the AnchorPane
+        weeklyTrack.getChildren().setAll(weeklyTrackValue);
+
+// Adjust the size of the loaded content to match the size of the AnchorPane
+        weeklyTrackValue.prefWidthProperty().bind(weeklyTrack.widthProperty());
+        weeklyTrackValue.prefHeightProperty().bind(weeklyTrack.heightProperty());
+
+// Load record values
+        FXMLLoader recordvaluesLoader = new FXMLLoader(getClass().getResource("/com/example/swole_mate/view/Workouts/values.fxml"));
+        AnchorPane recordTrackValue = recordvaluesLoader.load();
+        Values recordValue = recordvaluesLoader.getController();
+        recordValue.setDistanceLabel(5);
+        recordValue.setCaloriesLabel(6);
+        recordValue.setDurationLabel(7);
+        recordValue.setPointsLabel(8);
+
+// Set the loaded content into the AnchorPane
+        recordTrack.getChildren().setAll(recordTrackValue);
+
+// Adjust the size of the loaded content to match the size of the AnchorPane
+        recordTrackValue.prefWidthProperty().bind(recordTrack.widthProperty());
+        recordTrackValue.prefHeightProperty().bind(recordTrack.heightProperty());
+
     }
 
 }

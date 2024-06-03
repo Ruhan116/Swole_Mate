@@ -3,8 +3,12 @@ package com.example.swole_mate.controller;
 import com.example.swole_mate.Database.DatabaseManager;
 import com.example.swole_mate.Database.UserDB;
 import com.example.swole_mate.Functions.Hash;
+import com.example.swole_mate.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -15,7 +19,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -69,6 +75,8 @@ public class RegistrationController {
 
     @FXML
     private PasswordField cPassword;
+    @FXML
+    private Text errorMessage;
 
     @FXML
     private Label l1;
@@ -149,19 +157,43 @@ public class RegistrationController {
         String username = uName.getText();
         String email = this.email.getText();
         String password = this.password.getText(); // Assuming password is hashed before storing
+        String first_name = this.fName.getText();
+        String last_name = this.lName.getText();
+
+
+        System.out.println("Reg Button Clicked");
 
 
 
-        if(UserDB.searchName("username").getUsername() != null)
+        if(UserDB.searchName(username).getUsername() != null)
         {
-
+            errorMessage.setText("Account already exists.");
         }
         else
         {
             Hash hash;
             password = Hash.hashPassword(password);
 
-            UserDB.addUser(username, password, email);
+            UserDB.addUser(username, password, email, first_name, last_name, "017827");
+
+            try{
+                FXMLLoader fxmlLoader = new FXMLLoader(com.example.swole_mate.Main.class.getResource("view/initial_form.fxml"));
+
+                InitialForm controller = fxmlLoader.getController();
+
+                // Set the data in the controller
+                controller.setName(username);
+
+                Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+                stage.setTitle("Swole-Mate");
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.show();
+            }
+            catch (IOException exception) {
+                exception.printStackTrace();
+            }
         }
 
 
